@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  <main class="mt-5 pt-4">
+    <div class="container dark-grey-text mt-5">
+
+      <!--Grid row-->
+      <div class="row wow fadeIn">
+
+        <!--Grid column-->
+        <div class="col-md-4 mb-4">
+          <img src="{{ object.image.url }}" class="img-fluid" alt="">
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">
+
+          <!--Content-->
+          <div class="p-4">
+
+            <div class="mb-3">
+              <a href="">
+                <span class="badge purple mr-1">{{ object.get_category_display }}</span>
+              </a>
+            </div>
+
+            <p class="lead">
+              {% if object.discount_price %}
+              <span class="mr-1">
+                <del>${{ object.price }}</del>
+              </span>
+              <span>${{ object.discount_price }}</span>
+              {% else %}
+              <span>${{ object.price }}</span>
+              {% endif %}
+            </p>
+
+            <p class="lead font-weight-bold">Description</p>
+
+            <p>{{ object.description }}</p>
+
+            <a href="{{ object.get_add_to_cart_url }}" class="btn btn-primary btn-md my-0 p">
+              Add to cart
+              <i class="fas fa-shopping-cart ml-1"></i>
+            </a>
+            <a href="{{ object.get_remove_from_cart_url }}" class="btn btn-danger btn-md my-0 p">
+              Remove from cart
+            </a>
+
+          </div>
+          <!--Content-->
+
+        </div>
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+
+      <hr>
+
+      <!--Grid row-->
+      <div class="row d-flex justify-content-center wow fadeIn">
+
+        <!--Grid column-->
+        <div class="col-md-6 text-center">
+
+          <h4 class="my-4 h4">Additional information</h4>
+
+          <p>Base vs Generic views
+Base class-based views can be thought of as parent views, which can be used by themselves or inherited from. They may not provide all the capabilities required for projects, in which case there are Mixins which extend what base views can do.
+Django’s generic views are built off of those base views, and were developed as a shortcut for common usage patterns such as displaying the details of an object. They take certain common idioms and patterns found in view development and abstract them so that you can quickly write common views of data without having to repeat yourself.
+Most generic views require the queryset key, which is a QuerySet instance; see Making queries for more information about QuerySet objects.</p>
+        </div>
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+
+
+    </div>
+  </main>
+
+{% endblock content %}
